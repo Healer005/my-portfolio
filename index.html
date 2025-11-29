@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megha Vala | AI/ML Engineer & Data Analyst</title>
+    <meta name="description" content="Megha Vala - AI/ML Engineer specializing in machine learning, NLP, computer vision (YOLO), and data analytics. Explore my portfolio of transformative AI projects.">
+    <meta name="keywords" content="AI Engineer, Machine Learning, NLP, YOLO, TensorFlow, Data Analytics, Python, SQL, Power BI">
+    <meta property="og:title" content="Megha Vala | AI/ML Engineer Portfolio">
+    <meta property="og:description" content="Transforming data into intelligent solutions with AI/ML expertise">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5568d3;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --bg-dark: #0a0e27;
+            --bg-darker: #050818;
+            --text-light: #ffffff;
+            --text-gray: #a0aec0;
+            --card-bg: rgba(20, 24, 48, 0.8);
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-cosmic: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--bg-darker);
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s infinite;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--gradient-1);
+            top: -200px;
+            left: -200px;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-2);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: -10s;
+        }
+
+        .orb-3 {
+            width: 450px;
+            height: 450px;
+            background: linear-gradient(135deg, #f093fb 0%, #667eea 100%);
+            top: 50%;
+            left: 50%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(100px, -100px) scale(1.1); }
+            66% { transform: translate(-50px, 100px) scale(0.9); }
+        }
+
+        .cosmic-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: particleFade 2s ease-out forwards;
+        }
+
+        @keyframes particleFade {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 14, 39, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-cosmic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-cosmic);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-greeting {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-cosmic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-cosmic);
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .social-links {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--gradient-cosmic);
+            transform: translateY(-5px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-cosmic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-cosmic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-cosmic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-gray);
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-card:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .project-card:nth-child(even) .project-content {
+            order: 2;
+        }
+
+        .project-card:nth-child(even) .project-image {
+            order: 1;
+        }
+
+        .project-image {
+            background: var(--gradient-cosmic);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image i {
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .project-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .project-description {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.4rem 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.7rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-text {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(10, 14, 39, 0.6);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            color: var(--accent);
+        }
+
+        .contact-method i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-cosmic);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(10, 14, 39, 0.98);
+                width: 100%;
+                padding: 2rem;
+                transition: left 0.3s ease;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .about-content,
+            .project-card,
+            .project-card:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card:nth-child(even) .project-content,
+            .project-card:nth-child(even) .project-image {
+                order: 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg" id="cosmicBg">
+        <div class="gradient-orb orb-1" style="transform: translate(8.45px, -1.59px);"></div>
+        <div class="gradient-orb orb-2" style="transform: translate(16.9px, -3.18px);"></div>
+        <div class="gradient-orb orb-3" style="transform: translate(25.35px, -4.77px);"></div>
+    <div class="star" style="left: 14.4893%; top: 51.9097%; animation-delay: 0.607656s;"></div><div class="star" style="left: 93.8314%; top: 50.6085%; animation-delay: 1.24804s;"></div><div class="star" style="left: 59.6363%; top: 64.3102%; animation-delay: 2.61483s;"></div><div class="star" style="left: 19.6688%; top: 44.2809%; animation-delay: 0.100842s;"></div><div class="star" style="left: 69.4908%; top: 53.3093%; animation-delay: 1.74212s;"></div><div class="star" style="left: 48.5121%; top: 20.7733%; animation-delay: 1.10296s;"></div><div class="star" style="left: 31.1223%; top: 34.9516%; animation-delay: 1.82851s;"></div><div class="star" style="left: 27.3682%; top: 2.3226%; animation-delay: 1.95877s;"></div><div class="star" style="left: 9.0946%; top: 45.8823%; animation-delay: 2.13217s;"></div><div class="star" style="left: 12.953%; top: 29.1005%; animation-delay: 2.31775s;"></div><div class="star" style="left: 34.7115%; top: 47.1041%; animation-delay: 1.56839s;"></div><div class="star" style="left: 86.9426%; top: 83.1619%; animation-delay: 0.928984s;"></div><div class="star" style="left: 62.2623%; top: 71.8022%; animation-delay: 2.94567s;"></div><div class="star" style="left: 51.4149%; top: 70.7471%; animation-delay: 1.67096s;"></div><div class="star" style="left: 44.4765%; top: 81.1384%; animation-delay: 2.7875s;"></div><div class="star" style="left: 33.3341%; top: 92.702%; animation-delay: 1.49266s;"></div><div class="star" style="left: 25.5581%; top: 40.1611%; animation-delay: 0.966001s;"></div><div class="star" style="left: 56.0854%; top: 66.6929%; animation-delay: 0.530962s;"></div><div class="star" style="left: 2.63836%; top: 43.0103%; animation-delay: 2.4319s;"></div><div class="star" style="left: 73.8304%; top: 32.4384%; animation-delay: 0.588724s;"></div><div class="star" style="left: 83.3917%; top: 49.7497%; animation-delay: 2.33186s;"></div><div class="star" style="left: 32.5349%; top: 76.3448%; animation-delay: 2.23145s;"></div><div class="star" style="left: 84.9379%; top: 82.8725%; animation-delay: 1.26897s;"></div><div class="star" style="left: 84.4423%; top: 2.59823%; animation-delay: 2.856s;"></div><div class="star" style="left: 20.7902%; top: 31.6535%; animation-delay: 2.37296s;"></div><div class="star" style="left: 19.3624%; top: 3.91177%; animation-delay: 2.18109s;"></div><div class="star" style="left: 28.3955%; top: 39.2266%; animation-delay: 1.25872s;"></div><div class="star" style="left: 40.871%; top: 10.0188%; animation-delay: 1.53689s;"></div><div class="star" style="left: 72.768%; top: 44.8537%; animation-delay: 2.29932s;"></div><div class="star" style="left: 90.9569%; top: 16.0854%; animation-delay: 1.79177s;"></div><div class="star" style="left: 98.5734%; top: 5.54524%; animation-delay: 1.49285s;"></div><div class="star" style="left: 15.1495%; top: 8.27107%; animation-delay: 1.59878s;"></div><div class="star" style="left: 80.4271%; top: 44.2976%; animation-delay: 1.25581s;"></div><div class="star" style="left: 83.2736%; top: 25.3403%; animation-delay: 0.736695s;"></div><div class="star" style="left: 90.3535%; top: 58.2951%; animation-delay: 2.1856s;"></div><div class="star" style="left: 28.5103%; top: 60.4001%; animation-delay: 0.355681s;"></div><div class="star" style="left: 81.3888%; top: 18.8823%; animation-delay: 1.10075s;"></div><div class="star" style="left: 73.2661%; top: 4.69125%; animation-delay: 1.21664s;"></div><div class="star" style="left: 84.828%; top: 2.43508%; animation-delay: 0.386328s;"></div><div class="star" style="left: 63.408%; top: 62.1266%; animation-delay: 1.46062s;"></div><div class="star" style="left: 29.2342%; top: 46.3608%; animation-delay: 2.65906s;"></div><div class="star" style="left: 96.7873%; top: 8.36602%; animation-delay: 1.61301s;"></div><div class="star" style="left: 29.4054%; top: 4.41239%; animation-delay: 0.928943s;"></div><div class="star" style="left: 97.5515%; top: 2.96772%; animation-delay: 2.46291s;"></div><div class="star" style="left: 63.714%; top: 86.4268%; animation-delay: 0.383314s;"></div><div class="star" style="left: 80.053%; top: 2.3213%; animation-delay: 0.201641s;"></div><div class="star" style="left: 6.40537%; top: 34.4215%; animation-delay: 2.22086s;"></div><div class="star" style="left: 73.9342%; top: 33.7451%; animation-delay: 2.48643s;"></div><div class="star" style="left: 47.4997%; top: 97.8228%; animation-delay: 1.09826s;"></div><div class="star" style="left: 53.2907%; top: 62.9434%; animation-delay: 0.298211s;"></div><div class="star" style="left: 61.4308%; top: 40.9431%; animation-delay: 1.40555s;"></div><div class="star" style="left: 43.8214%; top: 39.9819%; animation-delay: 1.91156s;"></div><div class="star" style="left: 97.9439%; top: 33.7254%; animation-delay: 1.24152s;"></div><div class="star" style="left: 85.4267%; top: 12.2098%; animation-delay: 2.22373s;"></div><div class="star" style="left: 36.9875%; top: 43.0666%; animation-delay: 0.9469s;"></div><div class="star" style="left: 98.1086%; top: 34.555%; animation-delay: 2.11872s;"></div><div class="star" style="left: 87.8704%; top: 66.1441%; animation-delay: 0.655012s;"></div><div class="star" style="left: 88.322%; top: 95.7339%; animation-delay: 1.03115s;"></div><div class="star" style="left: 49.8081%; top: 31.8414%; animation-delay: 1.93781s;"></div><div class="star" style="left: 60.5303%; top: 18.4845%; animation-delay: 2.80176s;"></div><div class="star" style="left: 81.4873%; top: 38.9583%; animation-delay: 2.72008s;"></div><div class="star" style="left: 63.9743%; top: 92.9934%; animation-delay: 0.871202s;"></div><div class="star" style="left: 45.4343%; top: 95.9648%; animation-delay: 1.75945s;"></div><div class="star" style="left: 94.2597%; top: 57.4068%; animation-delay: 2.05673s;"></div><div class="star" style="left: 71.1158%; top: 83.6847%; animation-delay: 0.642434s;"></div><div class="star" style="left: 71.1562%; top: 81.2654%; animation-delay: 2.15757s;"></div><div class="star" style="left: 51.1111%; top: 28.8319%; animation-delay: 0.933138s;"></div><div class="star" style="left: 28.5457%; top: 69.0349%; animation-delay: 1.03001s;"></div><div class="star" style="left: 66.8991%; top: 51.1294%; animation-delay: 0.48041s;"></div><div class="star" style="left: 19.3515%; top: 31.9739%; animation-delay: 1.64081s;"></div><div class="star" style="left: 45.3299%; top: 86.7775%; animation-delay: 1.13913s;"></div><div class="star" style="left: 34.4611%; top: 33.5092%; animation-delay: 2.39546s;"></div><div class="star" style="left: 78.8456%; top: 43.9401%; animation-delay: 2.79504s;"></div><div class="star" style="left: 7.95077%; top: 8.93853%; animation-delay: 2.5798s;"></div><div class="star" style="left: 13.8512%; top: 14.5598%; animation-delay: 1.6817s;"></div><div class="star" style="left: 74.0459%; top: 50.0436%; animation-delay: 2.10306s;"></div><div class="star" style="left: 89.2526%; top: 72.2088%; animation-delay: 1.1088s;"></div><div class="star" style="left: 11.8443%; top: 37.6992%; animation-delay: 1.53233s;"></div><div class="star" style="left: 10.1808%; top: 79.2536%; animation-delay: 2.65262s;"></div><div class="star" style="left: 22.1422%; top: 71.3822%; animation-delay: 1.10819s;"></div><div class="star" style="left: 60.1589%; top: 15.533%; animation-delay: 1.04668s;"></div><div class="star" style="left: 67.5072%; top: 78.0308%; animation-delay: 2.86207s;"></div><div class="star" style="left: 55.6912%; top: 70.1468%; animation-delay: 2.31816s;"></div><div class="star" style="left: 66.8495%; top: 52.4995%; animation-delay: 0.53795s;"></div><div class="star" style="left: 92.1606%; top: 48.4795%; animation-delay: 0.449742s;"></div><div class="star" style="left: 14.8284%; top: 14.6485%; animation-delay: 2.62276s;"></div><div class="star" style="left: 40.2232%; top: 23.516%; animation-delay: 0.008703s;"></div><div class="star" style="left: 6.46578%; top: 77.086%; animation-delay: 1.02896s;"></div><div class="star" style="left: 9.3587%; top: 90.4977%; animation-delay: 0.831224s;"></div><div class="star" style="left: 35.2274%; top: 94.2433%; animation-delay: 2.70133s;"></div><div class="star" style="left: 60.8959%; top: 42.5257%; animation-delay: 0.772262s;"></div><div class="star" style="left: 75.0064%; top: 84.9356%; animation-delay: 2.94617s;"></div><div class="star" style="left: 75.7164%; top: 30.0714%; animation-delay: 0.325484s;"></div><div class="star" style="left: 13.5337%; top: 54.1542%; animation-delay: 2.74244s;"></div><div class="star" style="left: 27.7123%; top: 15.036%; animation-delay: 1.15179s;"></div><div class="star" style="left: 71.4065%; top: 98.1741%; animation-delay: 2.5097s;"></div><div class="star" style="left: 94.3241%; top: 82.8259%; animation-delay: 2.23881s;"></div><div class="star" style="left: 68.0845%; top: 88.3892%; animation-delay: 1.08276s;"></div><div class="star" style="left: 55.8349%; top: 86.6668%; animation-delay: 1.46047s;"></div><div class="star" style="left: 14.3953%; top: 27.7491%; animation-delay: 1.98847s;"></div></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress" style="width: 0%;"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="">
+        <div class="nav-container">
+            
+            <div class="logo"></div><ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Megha Vala</h1>
+            <p class="hero-subtitle">AI/ML Engineer | Data Analyst | Innovation Architect</p>
+            <p class="hero-description">
+                Transforming data into intelligent solutions with expertise in machine learning, natural language processing, and computer vision. I bridge the gap between complex AI technologies and real-world business impact.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> View My Work
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/Healer005" target="_blank" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/meghavala" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:valamegha05@gmail.com" class="social-link" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-tag">Who I Am</span>
+            <h2 class="section-title">About Me</h2>
+            <p class="section-description">
+                A passionate AI developer dedicated to creating transformative technological solutions.
+            </p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    I'm a <span class="highlight">curious learner</span> and AI innovator who thrives on solving complex problems with cutting-edge machine learning and data analytics. My expertise spans from building <span class="highlight">LLM-based resume ranking systems</span> to implementing <span class="highlight">YOLO-powered computer vision</span> solutions.
+                </p>
+                <p>
+                    With strong foundations in <span class="highlight">Python, TensorFlow, SQL, and Power BI</span>, I specialize in turning siloed data and inefficient processes into scalable, AI-powered insights that drive business value. Whether it's natural language processing, predictive analytics, or interactive visualizations, I create solutions that matter.
+                </p>
+                <p>
+                    My portfolio showcases projects like <span class="highlight">Sentify</span> (sentiment analysis), <span class="highlight">PixieSketch</span> (image generation), and <span class="highlight">Ask My Data</span> (intelligent data querying) — all demonstrating my commitment to innovation and excellence in AI/ML engineering.
+                </p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">AI/ML Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Technologies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Dedication</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Learning</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <span class="section-tag">My Expertise</span>
+            <h2 class="section-title">Skills &amp; Technologies</h2>
+            <p class="section-description">
+                A comprehensive toolkit for building intelligent, data-driven solutions
+            </p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <div class="skill-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="skill-title">AI &amp; Machine Learning</h3>
+                <ul class="skill-list">
+                    <li>TensorFlow &amp; PyTorch</li>
+                    <li>Natural Language Processing</li>
+                    <li>Computer Vision (YOLO)</li>
+                    <li>Deep Learning</li>
+                    <li>Model Optimization</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <div class="skill-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="skill-title">Programming</h3>
+                <ul class="skill-list">
+                    <li>Python </li>
+                    <li>SQL</li>
+                    
+                    <li>Database Design</li>
+                    
+                <li>UI/UX</li></ul>
+            </div>
+            <div class="skill-category">
+                <div class="skill-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="skill-title">Data Analytics</h3>
+                <ul class="skill-list">
+                    <li>Tableau</li>
+                    <li>Power BI</li><li>Data Visualization</li>
+                    <li>Statistical Analysis</li>
+                    
+                    <li>Business Intelligence</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <div class="skill-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="skill-title">Specialized Tools</h3>
+                <ul class="skill-list">
+                    <li>Jupyter Notebooks</li>
+                    <li>Kaggle Competitions</li>
+                    
+                    <li>Data Preprocessing</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <span class="section-tag">My Work</span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-description">
+                Transformative AI/ML solutions that bridge technology and business value
+            </p>
+        </div>
+        <div class="projects-grid">
+            <!-- Project 1: Sentify -->
+            <div class="project-card fade-in" style="opacity: 1; transform: translateY(0px);">
+                <div class="project-image">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">NLP &amp; Sentiment Analysis</span>
+                    <h3 class="project-title">Sentify</h3>
+                    <p class="project-description">
+                        Advanced sentiment analysis system leveraging NLP to extract emotional insights from text data. Processes customer feedback, social media content, and reviews to deliver actionable business intelligence with 92% accuracy.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">BERT</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Healer005/sentify" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: PixieSketch -->
+            <div class="project-card fade-in" style="opacity: 1; transform: translateY(0px);">
+                <div class="project-image">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Computer Vision &amp; AI Art</span>
+                    <h3 class="project-title">PixieSketch</h3>
+                    <p class="project-description">
+                        AI-powered image generation and artistic style transfer application. Transforms user inputs into unique visual artwork using generative adversarial networks (GANs) and neural style transfer techniques.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">GANs</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Healer005/PixieSketch" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Ask My Data -->
+            <div class="project-card fade-in" style="opacity: 1; transform: translateY(0px);">
+                <div class="project-image">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">LLM &amp; Data Analytics</span>
+                    <h3 class="project-title">Ask My Data</h3>
+                    <p class="project-description">
+                        Intelligent data querying system that allows users to ask natural language questions and receive insights from complex datasets. Integrates LLM technology with SQL generation to democratize data access for non-technical users.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">OpenAI API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Healer005/ask-my-data" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Waze Churn Analysis -->
+            <div class="project-card fade-in" style="opacity: 1; transform: translateY(0px);">
+                <div class="project-image">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Predictive Analytics</span>
+                    <h3 class="project-title">Waze Churn Analysis</h3>
+                    <p class="project-description">
+                        Comprehensive user churn prediction model for Waze using machine learning. Analyzes user behavior patterns, engagement metrics, and demographic data to identify at-risk users and recommend retention strategies, achieving 85% prediction accuracy.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Healer005/waze-churn-analysis" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-description">
+                Interested in collaborating on AI projects or discussing opportunities? I'd love to hear from you!
+            </p>
+        </div>
+        <div class="contact-content">
+            <p class="contact-text">
+                Whether you're looking for an AI/ML engineer to join your team, need consultation on data analytics projects, or want to collaborate on innovative solutions, feel free to reach out. I'm always open to discussing new opportunities and challenges.
+            </p>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required=""></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+            <div class="contact-methods">
+                <a href="mailto:valamegha05@gmail.com.com" class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span>valamegh05@gmail.com.com</span>
+                </a>
+                <a href="https://github.com/Healer005" target="_blank" class="contact-method">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/Healer005</span>
+                </a>
+                <a href="https://linkedin.com/in/meghavala" target="_blank" class="contact-method">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>linkedin.com/in/meghavala</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2025 Megha Vala.</p>
+            
+            
+        </div>
+    </footer>
+
+    <script>
+        // Create stars
+        const cosmicBg = document.querySelector('.cosmic-bg');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            cosmicBg.appendChild(star);
+        }
+
+        // Interactive cosmic effects - mouse movement
+        let mouseX = 0;
+        let mouseY = 0;
+        const orbs = document.querySelectorAll('.gradient-orb');
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Move orbs slightly based on mouse position
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.02;
+                const x = (mouseX - window.innerWidth / 2) * speed;
+                const y = (mouseY - window.innerHeight / 2) * speed;
+                orb.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Create particle effect on mouse move
+        let lastParticleTime = 0;
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastParticleTime > 50) { // Throttle particle creation
+                createParticle(e.clientX, e.clientY);
+                lastParticleTime = now;
+            }
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'cosmic-particle';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            
+            // Random direction
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 50 + Math.random() * 50;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance;
+            
+            particle.style.setProperty('--tx', tx + 'px');
+            particle.style.setProperty('--ty', ty + 'px');
+            
+            cosmicBg.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+
+        // Click effect - burst of particles
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    createParticle(e.clientX, e.clientY);
+                }, i * 30);
+            }
+        });
+
+        // Parallax scroll effect for orbs
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.1;
+                orb.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercentage + '%';
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // For demonstration - in production, integrate with email service
+            alert(`Thank you, ${name}! Your message has been received. I'll get back to you at ${email} soon.`);
+            contactForm.reset();
+        });
+
+        // Add typing effect to hero subtitle (optional enhancement)
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        const originalText = heroSubtitle.textContent;
+        heroSubtitle.textContent = '';
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < originalText.length) {
+                heroSubtitle.textContent += originalText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, 50);
+            }
+        }
+
+        setTimeout(typeText, 500);
+    </script>
+</body>
+</html>
+
