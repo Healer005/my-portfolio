@@ -819,7 +819,14 @@
             }
         }
     </style>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "e7DvUbRbcife1aB7W",
+            });
+        })();
+    </script>
 </head>
 <body>
     <!-- Cosmic Background -->
@@ -1343,48 +1350,44 @@
         setTimeout(typeText, 500);
     </script>
     <script>
-        // Initialize EmailJS with your Public Key
-        emailjs.init("service_9f56tl5");
-    </script>
-        <script>
-        // Handle contact form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent page reload
-            
-            // Get the submit button
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
-            // Show loading state
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            // Send email via EmailJS
-            emailjs.sendForm('service_9f56tl5', 'template_3eonehb', this)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    
-                    // Show success message
-                    alert('✅ Message sent successfully! I\'ll get back to you soon.');
-                    
-                    // Clear the form
-                    document.getElementById('contact-form').reset();
-                    
-                    // Reset button
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    
-                    // Show error message
-                    alert('❌ Oops! Failed to send message. Please try again or contact me directly.');
-                    
-                    // Reset button
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                });
+    // Handle contact form submission
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const form = this;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        // Show loading state
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Get form data
+        const name = form.querySelector('input[name="name"]').value;
+        const email = form.querySelector('input[name="email"]').value;
+        const message = form.querySelector('textarea[name="message"]').value;
+        
+        // Send email
+        emailjs.send('service_9f56tl5', 'template_3eonehb', {
+            to_email: 'valamegh05@gmail.com',
+            from_name: name,
+            from_email: email,
+            message: message,
+            reply_to: email
+        })
+        .then(function(response) {
+            alert('✅ Message sent successfully! I\'ll get back to you soon.');
+            form.reset();
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, function(error) {
+            alert('❌ Failed to send message. Please try again.');
+            console.log('FAILED...', error);
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
         });
-    </script>
+    });
+</script>
 </body>
 </html>
 
