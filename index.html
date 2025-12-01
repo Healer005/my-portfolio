@@ -819,6 +819,7 @@
             }
         }
     </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
 </head>
 <body>
     <!-- Cosmic Background -->
@@ -1141,7 +1142,7 @@
             <div class="contact-methods">
                 <a href="mailto:valamegha05@gmail.com.com" class="contact-method">
                     <i class="fas fa-envelope"></i>
-                    <span>valamegh05@gmail.com.com</span>
+                    <span>valamegh05@gmail.com</span>
                 </a>
                 <a href="https://github.com/Healer005" target="_blank" class="contact-method">
                     <i class="fab fa-github"></i>
@@ -1340,6 +1341,49 @@
         }
 
         setTimeout(typeText, 500);
+    </script>
+    <script>
+        // Initialize EmailJS with your Public Key
+        emailjs.init("service_9f56tl5");
+    </script>
+        <script>
+        // Handle contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page reload
+            
+            // Get the submit button
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Send email via EmailJS
+            emailjs.sendForm('service_9f56tl5', 'template_3eonehb', this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    alert('✅ Message sent successfully! I\'ll get back to you soon.');
+                    
+                    // Clear the form
+                    document.getElementById('contact-form').reset();
+                    
+                    // Reset button
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message
+                    alert('❌ Oops! Failed to send message. Please try again or contact me directly.');
+                    
+                    // Reset button
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
     </script>
 </body>
 </html>
