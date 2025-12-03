@@ -1147,7 +1147,7 @@
                 </form>
             </div>
             <div class="contact-methods">
-                <a href="mailto:valamegha05@gmail.com.com" class="contact-method">
+                <a href="mailto:valamegha05@gmail.com" class="contact-method">
                     <i class="fas fa-envelope"></i>
                     <span>valamegh05@gmail.com</span>
                 </a>
@@ -1319,20 +1319,6 @@
             observer.observe(el);
         });
 
-        // Contact form handling
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            
-            // For demonstration - in production, integrate with email service
-            alert(`Thank you, ${name}! Your message has been received. I'll get back to you at ${email} soon.`);
-            contactForm.reset();
-        });
-
         // Add typing effect to hero subtitle (optional enhancement)
         const heroSubtitle = document.querySelector('.hero-subtitle');
         const originalText = heroSubtitle.textContent;
@@ -1351,43 +1337,34 @@
     </script>
     <script>
     // Handle contact form submission
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
         e.preventDefault();
-        
-        const form = this;
-        const submitBtn = form.querySelector('button[type="submit"]');
+
+        const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        
-        // Show loading state
+
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-        
-        // Get form data
-        const name = form.querySelector('input[name="name"]').value;
-        const email = form.querySelector('input[name="email"]').value;
-        const message = form.querySelector('textarea[name="message"]').value;
-        
-        // Send email
-        emailjs.send('service_9f56tl5', 'template_3eonehb', {
-            to_email: 'valamegh05@gmail.com',
-            from_name: name,
-            from_email: email,
-            message: message,
-            reply_to: email
-        })
-        .then(function(response) {
+
+        emailjs.sendForm('service_9f56tl5', 'template_sk50sy9', this) // notification to you
+        .then(() => {
+            // fire auto‑reply, but don’t block UI on it
+            emailjs.sendForm('service_9f56tl5', 'template_gabvzje', this);
+
             alert('✅ Message sent successfully! I\'ll get back to you soon.');
-            form.reset();
+            this.reset();
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-        }, function(error) {
+        })
+        .catch((error) => {
+            console.error(error);
             alert('❌ Failed to send message. Please try again.');
-            console.log('FAILED...', error);
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
         });
-    });
-</script>
+            });
+    </script>
+
 </body>
 </html>
 
